@@ -77,7 +77,21 @@ public class OOCalc {
             }
         }
     }
-    public static void main(String[] args) {
-        new OOCalc().run();
-    }
+    
 }
+
+public class JCalc extends OOCalc {
+    class NoOp extends Op {
+	public static String opName(){return "noop"};
+	public void exec(Deque<Integer> stack){
+	}
+    }
+    String[][] alias = {{"足す", "+"}, {"引く", "-"}, {"かける", "*"}, {"割る", "/"},
+                        {"から", "noop"}, {"と", "noop"}, {"を", "noop"}, {"で", "noop"}};
+
+    JCalc(){
+	
+    }
+    public static void main(String[] args){
+	new JCalc().run();
+    }
