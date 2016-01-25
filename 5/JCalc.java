@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class OOCalc {
+public class JCalc {
     // OOCalcのインナークラス
     abstract class Op {
         abstract public String opName();
@@ -50,7 +50,7 @@ public class OOCalc {
     Deque<Integer> stack;
     Scanner scanner;
     Map<String, Op> ops;  // 単語辞書
-    OOCalc() {
+    JCalc() {
         stack = new LinkedList<Integer>();
         scanner = new Scanner(System.in);
         ops = new HashMap<String, Op>();
