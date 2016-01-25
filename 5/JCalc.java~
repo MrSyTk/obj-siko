@@ -6,7 +6,7 @@ public class JCalc extends OOCalc {
 
     JCalc(){
 	for(String[] jp : alias)
-	    ops.put(jp[0],ops.get(jp[1]));
+	    ops.put(jp[2],ops.get(jp[1]));
     }
     public static void main(String[] args){
 	new JCalc().run();
