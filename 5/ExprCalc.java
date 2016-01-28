@@ -1,6 +1,6 @@
 import java.util.*;
 public class ExprCalc extends OOGCalc<ExprCalc.Tree> {
-    static RatioCalc ratio new RatioCalc();
+    static RatioCalc ratio = new RatioCalc();
     static Deque<RatioCalc._Ratio> rstack = new LinkedList<RatioCalc._Ratio>();
     abstract class Tree implements Numeric<Tree> {
         abstract public String toString();
@@ -14,8 +14,8 @@ public class ExprCalc extends OOGCalc<ExprCalc.Tree> {
         t.stackTree();
         return rstack.pop().toString();
     }
-    class Eval extends OOGCalc.Op {
-        public String opName(){return "?"}
+    class Eval extends OOGCalc<Tree>.Op {
+        public String opName(){return "?";}
         public void exec(Deque<Tree> stack){
             System.out.println(readTree(stack.pop()));
         }
@@ -29,7 +29,7 @@ public class ExprCalc extends OOGCalc<ExprCalc.Tree> {
         Leaf(int value) { this.value = value; }
         public String toString() { return Integer.toString(value); }
         public void stackTree(){
-            rstack.push(RatioCalc._RatiofromInt(value));
+            rstack.push(ratio.fromInt(value));
         }
     }
     class Node extends Tree {
@@ -51,10 +51,9 @@ public class ExprCalc extends OOGCalc<ExprCalc.Tree> {
         public void stackTree(){
             left.stackTree();
             right.stackTree();
-            ratio.super.ops.get(op).exec(rstack);
+            ratio.ops.get(op).exec(rstack);
         }
    
-            
     }
     public Tree fromInt(int v){
         return new Leaf(v);

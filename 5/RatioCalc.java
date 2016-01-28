@@ -9,7 +9,7 @@ public class RatioCalc extends OOGCalc<RatioCalc._Ratio> {
         public _Ratio divide(_Ratio v) { return new _Ratio(r.divide(v.r)); }
         public String toString() { return r.toString(); }
     }
-    protected _Ratio fromInt(int v) {
+    public _Ratio fromInt(int v) {
         return new _Ratio(new Ratio(v,1));
     }
     class NoOp extends Op {
