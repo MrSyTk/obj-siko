@@ -17,7 +17,7 @@ public class ExprCalc extends OOGCalc<ExprCalc.Tree> {
     class Eval extends OOGCalc<Tree>.Op {
         public String opName(){return "?";}
         public void exec(Deque<Tree> stack){
-            System.out.println(readTree(stack.pop()));
+            System.out.println(readTree(stack.getFirst()));
         }
     }
     final Eval EVAL_OP = new Eval();
